@@ -52,9 +52,7 @@ function Home() {
             Discover our beautiful planet and explore countries from space
           </p>
         </div>
-        
-        <EarthGlobe />
-        
+       
         <div className="flex flex-col md:flex-row gap-4 items-center justify-center mb-12 animate-fadeIn">
           <SearchBar onSearch={setQuery} />
           <Filter onFilter={setRegion} />

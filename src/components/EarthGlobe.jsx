@@ -39,10 +39,13 @@ function EarthGlobe() {
   }, []);
 
   return (
-    <div className="earth-container my-8">
-      <div ref={earthRef} className="earth"></div>
+    <div className="fixed inset-0 z-[-1] pointer-events-none">
+      <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-[1400px] h-[1400px]">
+        <div ref={earthRef} className="earth w-full h-full"></div>
+      </div>
     </div>
   );
-}
+  
+}  
 
 export default EarthGlobe;

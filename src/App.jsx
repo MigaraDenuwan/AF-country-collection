@@ -6,6 +6,7 @@ import Favorites from './pages/Favorites';
 import Navbar from './components/Navbar';
 import Stars from './components/Stars';
 import { AuthProvider } from './context/AuthContext';
+import EarthGlobe from './components/EarthGlobe';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <div className="min-h-screen relative text-gray-100">
           <Stars />
+          <EarthGlobe />
           <Navbar />
           <main className="page-transition">
             <Routes>
