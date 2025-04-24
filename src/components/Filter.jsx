@@ -22,7 +22,7 @@ function Filter({ onFilter }) {
           <option key={region} value={region}>{region}</option>
         ))}
       </select>
-      <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+      <div className="absolute right-8 top-1/2 transform -translate-y-1/2 text-gray-400">
         <Globe size={20} />
       </div>
       <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-400">

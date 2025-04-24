@@ -18,7 +18,7 @@ function SearchBar({ onSearch }) {
         onChange={handleChange}
         className="search-input w-full pl-12 pr-4 py-3"
       />
-      <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
         <Search size={20} />
       </div>
       {value && (
