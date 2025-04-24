@@ -1,34 +1,50 @@
-import { Link, useNavigate } from "react-router-dom"
-import { useAuth } from "../context/AuthContext"
-import { signOut } from "firebase/auth"
-import { auth } from "../firebase"
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { useEffect, useState } from "react";
+import { LogOut, LogIn, Heart, Home, Globe, Menu, X } from "lucide-react";
 
 function Navbar() {
-  const { user } = useAuth()
-  const navigate = useNavigate()
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const handleLogout = async () => {
-    await signOut(auth)
-    navigate("/login")
-  }
+    await signOut(auth);
+    navigate("/login");
+    setMobileMenuOpen(false);
+  };
+
+  const handleNavigate = (path) => {
+    navigate(path);
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="bg-blue-700 text-white p-4 flex justify-between items-center shadow-md">
-      <div className="flex gap-4 items-center">
-        <Link to="/" className="text-xl font-bold">🌍 Country Explorer</Link>
-        {user && <Link to="/favorites" className="hover:underline">Favorites</Link>}
-      </div>
-      <div className="flex gap-4 items-center">
-        {user ? (
-          <>
-            <span className="text-sm">{user.email}</span>
-            <button onClick={handleLogout} className="bg-white text-blue-700 px-3 py-1 rounded hover:bg-blue-100 transition">Logout</button>
-          </>
-        ) : (
-          <Link to="/login" className="bg-white text-blue-700 px-3 py-1 rounded hover:bg-blue-100 transition">Login</Link>
-        )}
+    <nav className={`fixed top-0 left-0 right-0 z-50 px-4 py-4 transition-all duration-300 ${
+      scrolled ? "bg-slate-900/95 backdrop-blur-md shadow-md" : "bg-transparent"
+    }`}>
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <Link to="/" className="flex items-center space-x-3 text-glow">
+          <Globe className="text-indigo-400" size={28} />
+          <span className="text-xl font-bold hidden sm:block">Earth Explorer</span>
+        </Link>
+        {/* Rest of the nav... */}
       </div>
     </nav>
-  )
+  );
 }
-export default Navbar
+
+export default Navbar;

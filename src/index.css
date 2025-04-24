@@ -1,1 +1,201 @@
 @import "tailwindcss";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-primary: #1a2b4b;
+  --color-secondary: #2a3f5f;
+  --color-accent: #5d5fef;
+  --color-highlight: #64ffda;
+  --color-text: #e6e6e6;
+  --color-background: #0f172a;
+}
+
+body {
+  color: var(--text-gray-100);
+  background: var(--color-slate-950);
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 20% 35%, rgba(93, 95, 239, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 75% 44%, rgba(100, 255, 218, 0.1) 0%, transparent 50%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', sans-serif;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+/* Custom Classes */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideInUp 0.5s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 20s linear infinite;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+}
+
+.border-glow {
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.page-transition {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.search-input {
+    background-color: #1e293b; 
+    border: 1px solid #334155; 
+    color: #e5e7eb; 
+    padding: 1rem; 
+    border-radius: 0.75rem; 
+    outline: none;
+    transition: all 0.3s ease; 
+  }
+
+.search-input:focus {
+    box-shadow: 0 0 0 2px var(--color-accent); 
+  }
+
+  .btn-primary {
+    background-color: #4f46e5; 
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem; 
+    font-weight: 500; 
+    transition: all 0.3s ease; 
+    box-shadow: 0 4px 14px rgba(93, 95, 239, 0.4);
+  }
+  
+  .btn-primary:hover {
+    background-color: #4338ca;
+  }
+  
+  .btn-secondary {
+    background-color: transparent;
+    color: #d1d5db; 
+    border: 1px solid #334155;
+    padding: 0.75rem 1.5rem; 
+    border-radius: 0.5rem;
+    font-weight: 500; 
+    transition: all 0.3s ease; 
+  }
+  
+  .btn-secondary:hover {
+    background-color: #1e293b;
+  }  
+
+  .country-card {
+    border-radius: 1rem; 
+    overflow: hidden;
+    transition: all 0.3s ease; 
+  }
+  
+  .country-card:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3); 
+  }  
+
+/* Page specific */
+.earth-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.earth {
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.pexels.com/photos/355935/pexels-photo-355935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 
+    inset 0 0 50px rgba(0,0,0,0.6),
+    0 0 20px rgba(100, 255, 218, 0.4);
+  animation: spin 20s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.stars-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  overflow: hidden;
+}
